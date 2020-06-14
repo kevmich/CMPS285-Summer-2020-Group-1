@@ -106,6 +106,10 @@ namespace Group1BookStore
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            MigrateDb(app);
+            AddRoles(app).GetAwaiter().GetResult();
+            AddUsers(app).GetAwaiter().GetResult();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -128,6 +132,57 @@ namespace Group1BookStore
             {
                 endpoints.MapControllers();
             });
+        }
+
+        private static async Task AddRoles(IApplicationBuilder app)
+        {
+            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                var roleManager = serviceScope.ServiceProvider.GetService<RoleManager<Role>>();
+                if (roleManager.Roles.Any())
+                {
+                    return;
+                }
+
+                await roleManager.CreateAsync(new Role {Name = Roles.Admin});
+                await roleManager.CreateAsync(new Role {Name = Roles.Customer});
+                await roleManager.CreateAsync(new Role {Name = Roles.Manager});
+                await roleManager.CreateAsync(new Role {Name = Roles.Employee});
+            }
+        }
+
+        private static async Task AddUsers(IApplicationBuilder app)
+        {
+            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                var userManager = serviceScope.ServiceProvider.GetService<UserManager<User>>();
+                if (userManager.Users.Any())
+                {
+                    return;
+                }
+
+                await CreateUser(userManager, "admin", Roles.Admin);
+                await CreateUser(userManager, "customer", Roles.Customer);
+                await CreateUser(userManager, "manager", Roles.Manager);
+                await CreateUser(userManager, "employee", Roles.Employee);
+            }
+        }
+
+        private static async Task CreateUser(UserManager<User> userManager, string username, string role)
+        {
+            const string passwordForEveryone = "Password123!";
+            var user = new User {UserName = username };
+            await userManager.CreateAsync(user, passwordForEveryone);
+            await userManager.AddToRoleAsync(user, role);
+        }
+
+        private static void MigrateDb(IApplicationBuilder app)
+        {
+            using(var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetService<DataContext>();
+                context.Database.Migrate();
+            }
         }
     }
 }
