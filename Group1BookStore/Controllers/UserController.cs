@@ -46,7 +46,7 @@ namespace Group1BookStore.Controllers
                     return BadRequest(new { message = "The role you are trying to assing does not exist." });
                 }
 
-                var identityResult = await userManager.AddToRoleAsync(newUser, dto.Password);
+                var identityResult = await userManager.CreateAsync(newUser, dto.Password);
                 if (!identityResult.Succeeded)
                 {
                     return BadRequest(new { message = "Unable to create user with given Username and Password. Verify Password meets specifications." });
