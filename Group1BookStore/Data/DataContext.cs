@@ -1,4 +1,5 @@
 ﻿using Group1BookStore.Data.Entities;
+using Group1BookStore.Store;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -20,7 +21,7 @@ namespace Group1BookStore.Data
         // Add your DbSets here for each new table
         // ex.
         // public DbSet<Book> Books { get; set; } 
-
+        public DbSet<Inventory> Inventories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
