@@ -29,6 +29,9 @@ namespace Group1BookStore.Controllers
                 Date = targetValue.Date;
                 Console = targetValue.Console; 
             }
+            dataContext.SaveChanges();
+            targetValue.Id = data.Entity.Id;
+            return Ok(targetValue);
         }
     }
 }
