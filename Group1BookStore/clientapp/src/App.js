@@ -5,6 +5,8 @@ import Login from './Componets/Login.js';
 import Books from './Componets/Books';
 import Toys from './Componets/Toys';
 import Movies from './Componets/Movies';
+import About from './Componets/About';
+import Home from './Componets/Home';
 
 
 import {
@@ -19,10 +21,12 @@ function App() {
     <div className="App">
       <Navbar/>
       <Switch>
+      <Route exact path="/" component={Home} />
       <Route exact path="/Login" component={Login} />
       <Route exact path="/books" component={Books} />
       <Route exact path="/movies" component={Movies} />
       <Route exact path="/toys" component={Toys} />
+      <Route exact path="/about" component={About}/>
       
 
       </Switch>

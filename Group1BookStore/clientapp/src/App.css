@@ -3,7 +3,7 @@
   margin: auto;
 }
 body {
-  background-image: url("https://images.pexels.com/photos/45717/pexels-photo-45717.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  
   min-height: 100px;
   display: flex;
   flex-direction: column;
@@ -15,7 +15,23 @@ body {
 }
 
 .App-link {
-  color: #7061fb;
+  color: #03010e;
 }
 
+.navbar{
+  outline: 5px solid black
 
+}
+
+.nav-link{
+color: #03010e
+}
+
+.Link{
+  color: #03010e
+}
+
+.home{
+  background-image: url("https://images.pexels.com/photos/45717/pexels-photo-45717.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260%22");
+  height: 100vh;
+}

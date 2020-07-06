@@ -32,9 +32,11 @@ const Login = (props) => {
  }
 
   return !Newdirect ?  (
-    
+    <div className = 'login'>
     <div className = 'login-effects'>
-      
+      <h1>
+        Login
+      </h1>
     <Form>
       <FormGroup>
         <Label for="exampleEmail">Username</Label>
@@ -49,7 +51,9 @@ const Login = (props) => {
       </Button>
       </Form>
      </div> 
+     </div>
   ): (<Redirect to= "/"/>);
+ 
 }
 
 export default Login;

@@ -1,0 +1,17 @@
+.login-effects{
+    text-align: left;
+    margin: auto;
+    width: 50%;    
+    padding: 1em;
+    background-color: white;
+}
+
+.login-effects>h1{
+    padding-bottom: 1em ;
+}
+
+.login{
+    background-image: url("https://images.pexels.com/photos/45717/pexels-photo-45717.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260%22");
+  height: 100vh;
+  padding-top: 150px;
+}
