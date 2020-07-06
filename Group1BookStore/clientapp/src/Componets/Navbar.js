@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import "./Navbar.css";
+import { Link } from 'react-router-dom';
 import {
   Collapse,
   Navbar,
@@ -19,34 +21,36 @@ const MyNavabar = (props) => {
 
   const toggle = () => setIsOpen(!isOpen);
 
-  return (
-    <div>
-      <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">TheBookcase</NavbarBrand>
+  return(
+  <div className = 'navbar-effects'>
+      <Navbar color="light" light expand="lg">
+        <NavbarBrand href="/">The Bookcase</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                Search
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>
-                  Books
-                </DropdownItem>
-                <DropdownItem>
-                  Toys
-                </DropdownItem>
-                <DropdownItem>
-                  Movies
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
+          
+          <Nav className="nav-wrapper">
+             <div className="container">
+          <ul class="nav nav-tabs">
+             <li class="nav-item">
+                 <a class="nav-link active" href="/books">Books</a>
+             </li>
+               <li class="nav-item">
+                   <a class="nav-link" href="/movies">Movies</a>
+               </li>
+               <li class="nav-item">
+                     <a class="nav-link" href="/toys">Toys</a>
+               </li>
+                </ul>
+
+                <ul className="right">
+                
+            </ul>
+          </div>
+          
           </Nav>
-          <NavItem>
-          <NavLink href = '/Login'>Login</NavLink>
-          </NavItem>
+          
         </Collapse>
+        <li><Link to="/login">Login</Link></li>
       </Navbar>
     </div>
   );

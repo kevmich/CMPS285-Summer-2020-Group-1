@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -35,6 +36,12 @@ namespace Group1BookStore
 
             services.AddDbContext<DataContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DataContext")));
+
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "clientapp";
+
+            });
 
             services.AddIdentity<User, Role>()
                 .AddEntityFrameworkStores<DataContext>()
@@ -115,6 +122,8 @@ namespace Group1BookStore
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseSpaStaticFiles();
+
             app.UseHttpsRedirection();
 
             app.UseSwagger();
@@ -132,7 +141,20 @@ namespace Group1BookStore
             {
                 endpoints.MapControllers();
             });
+
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = "clientapp";
+
+                if (env.IsDevelopment())
+                {
+                    spa.UseReactDevelopmentServer(npmScript: "start");
+                }
+
+            });
         }
+
+       
 
         private static async Task AddRoles(IApplicationBuilder app)
         {
