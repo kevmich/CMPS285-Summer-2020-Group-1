@@ -19,7 +19,8 @@ namespace Group1BookStore.Data
 
         // Add your DbSets here for each new table
         // ex.
-        // public DbSet<Book> Books { get; set; } 
+
+         public DbSet<Book> Book { get; set; } 
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

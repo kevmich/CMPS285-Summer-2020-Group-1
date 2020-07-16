@@ -114,6 +114,7 @@ namespace Group1BookStore
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             MigrateDb(app);
+            SeedData(app);
             AddRoles(app).GetAwaiter().GetResult();
             AddUsers(app).GetAwaiter().GetResult();
 
@@ -154,9 +155,24 @@ namespace Group1BookStore
             });
         }
 
-       
+        private static void SeedData(IApplicationBuilder app)
+        {
 
-        private static async Task AddRoles(IApplicationBuilder app)
+            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetService<DataContext>();
+                if (context.Set<Book>().Any())
+                {
+                    return;
+                }
+                context.Set<Book>().Add(new Book { Title = "Harry Potter and the Chamber of Secrets", Author = " J. K. Rowling" , Price = 13.99 });
+                context.Set<Book>().Add(new Book { Title = "Percy Jackson and the Olympians: The Lightning Thief", Author = "Rick Riordan", Price = 10.99 });
+                context.Set<Book>().Add(new Book { Title = "The Adventures of Sherlock Holmes", Author = "Arthur Canon Doyle", Price = 11.99 });
+                context.SaveChanges();
+            }
+        }
+
+            private static async Task AddRoles(IApplicationBuilder app)
         {
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {

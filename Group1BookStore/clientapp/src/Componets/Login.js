@@ -1,6 +1,6 @@
 
 import "./Login.css";
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText, Alert } from 'reactstrap';
 import axios from "axios";
 import React, {useState} from 'react';
 import { Redirect } from "react-router-dom";
@@ -8,6 +8,7 @@ import { Redirect } from "react-router-dom";
 
 
 const Login = (props) => {
+  
   const [userLogin, setUserLogin] = useState("");
   const [Password, setPassword] = useState("");
   const[Newdirect, setNewdirect] = useState(false);
@@ -21,13 +22,16 @@ const Login = (props) => {
       password: Password,
     }
   }).then((response)=> {
-    if(
-      response.status == 200
-    )
-    {
+    if( response.status == 200)
+
+    { 
       setNewdirect(true);
     }
-  });
+    
+  }).catch((e)=>{
+      console.log("Kaven==itch" + e);
+      alert("Wrong Username or Password");
+  })
 
  }
 
