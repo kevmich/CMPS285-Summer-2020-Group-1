@@ -29,7 +29,7 @@ const Login = (props) => {
     }
     
   }).catch((e)=>{
-      console.log("Kaven==itch" + e);
+      console.log("Wrong" + e);
       alert("Wrong Username or Password");
   })
 
