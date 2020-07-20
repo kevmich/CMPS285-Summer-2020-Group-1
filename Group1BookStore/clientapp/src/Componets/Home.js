@@ -6,7 +6,7 @@ function Home(){
         <div className = 'home'>
 
         <h1>
-            Welcome to The Bookcase
+            Welcome to The Bookcase!
         </h1>
 
         </div>

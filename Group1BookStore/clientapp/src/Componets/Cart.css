@@ -1,0 +1,14 @@
+.Cart{
+    font-size: 1.5em;
+    
+}
+
+.img{
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.Cart>p{
+    padding: 6em;
+    outline-style: solid;
+}
