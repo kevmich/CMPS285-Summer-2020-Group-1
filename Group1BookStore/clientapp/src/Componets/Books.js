@@ -40,6 +40,7 @@ class Books extends Component {
                             </Media>
                             {post.author} <br/>
                             {post.price}
+                            
                         </Media>
                     </Media>
                 )

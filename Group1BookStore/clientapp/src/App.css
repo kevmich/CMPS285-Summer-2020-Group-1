@@ -35,3 +35,13 @@ color: #03010e
   background-image: url("https://images.pexels.com/photos/45717/pexels-photo-45717.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260%22");
   height: 100vh;
 }
+
+.Carousel{
+width : 100%;
+height: 40em;
+}
+
+.carousel-item>img{
+  width:100%;
+  height:40em;
+}

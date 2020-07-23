@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 import { Link } from 'react-router-dom';
 
-
 import {
   Collapse,
   Navbar,
@@ -55,13 +54,15 @@ const MyNavabar = (props) => {
           </Nav>
           
         </Collapse>
-        <li><Link to="/login"> Login </Link></li>
-        <li><Link to="/cart">
-        <ion-icon name="cart-outline"></ion-icon>
-          Cart<span> ( 0 )</span></Link></li>
+        <Link to="/login"> 
+        <button className="btn btn-success float-left">Login</button> </Link>
+        <Link to="/cart">
+        <button className="btn btn-primary float-right">Cart</button></Link>
       </Navbar>
     </div>
   );
 }
+      
+
 
 export default MyNavabar;
