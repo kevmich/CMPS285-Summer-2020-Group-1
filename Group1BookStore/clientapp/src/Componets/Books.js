@@ -3,10 +3,16 @@ import axios from "axios";
 
 import { Media } from 'reactstrap';
 import React, {  Component } from 'react';
+import {connect} from 'react-redux';
+import {addBasket} from '../actions/addAction';
+
 
 
 
 class Books extends Component {
+
+   
+
   constructor(props) {
       super(props);
       this.state = { posts: [] }
@@ -21,10 +27,12 @@ class Books extends Component {
       } catch (err) {
           console.log(err.message)
       }
+
   }
 
 
   render() {
+
       return (
         <div className="container">
         {
@@ -32,14 +40,15 @@ class Books extends Component {
                 this.state.posts.map(post =>
                     <Media>
                         <Media left href="#">
-                            <Media object data-src="holder.js/64x64" alt="Generic placeholder image" />
+                            <Media object data-src="holder.js/64x64"  />
                         </Media>
                         <Media body>
                             <Media heading>
                                 {post.title}
                             </Media>
                             {post.author} <br/>
-                            {post.price}
+                            {post.price}  <br/>
+                            <a  onClick={this.props.addBasket} href = "">Add to Cart</a>
                         </Media>
                     </Media>
                 )
@@ -50,4 +59,4 @@ class Books extends Component {
   }
 }
 
-export default Books;
+export default connect(null,{addBasket})(Books);

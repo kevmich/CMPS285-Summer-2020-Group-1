@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 
 import { Link } from 'react-router-dom';
+import {connect} from 'react-redux';
+import {getNumbers} from '../actions/getAction';
+
 
 
 import {
@@ -17,11 +20,17 @@ import {
   DropdownItem,
   NavbarText
 } from 'reactstrap';
+import { useEffect } from 'react';
 
 const MyNavabar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
+
+  useEffect(() => {
+    getNumbers();
+  }, [])
+
 
   return(
   <div>
@@ -58,10 +67,14 @@ const MyNavabar = (props) => {
         <li><Link to="/login"> Login </Link></li>
         <li><Link to="/cart">
         <ion-icon name="cart-outline"></ion-icon>
-          Cart<span> ( 0 )</span></Link></li>
+          Cart<span>{props.basketProps.basketNumbers}</span></Link></li>
       </Navbar>
     </div>
   );
 }
 
-export default MyNavabar;
+const mapStateToProps = state => ({
+  basketProps: state.basketState
+})
+
+export default connect(mapStateToProps,{getNumbers})(MyNavabar);
