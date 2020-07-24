@@ -15,11 +15,9 @@ import {
     },
     {
         src: 'https://images.pexels.com/photos/590493/pexels-photo-590493.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-   
     },
     {
         src: 'https://images.pexels.com/photos/5834/nature-grass-leaf-green.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-     
     }
   ];
 
