@@ -5,7 +5,6 @@ import Login from './Componets/Login.js';
 import Books from './Componets/Books';
 import Toys from './Componets/Toys';
 import Movies from './Componets/Movies';
-import About from './Componets/About';
 import Home from './Componets/Home';
 
 
@@ -27,7 +26,6 @@ function App() {
       <Route exact path="/books" component={Books} />
       <Route exact path="/movies" component={Movies} />
       <Route exact path="/toys" component={Toys} />
-      <Route exact path="/about" component={About}/>
 
       </Switch>
      
