@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-
 import {
     Carousel,
     CarouselItem,
     CarouselControl,
     CarouselIndicators,
-    CarouselCaption
+    CarouselCaption,
   } from 'reactstrap';
+  
  
 
   const items = [
@@ -26,7 +26,7 @@ const Home = (props) => {
     const [animating, setAnimating] = useState(false);
     
   
-    const next = () => {
+  const next = () => {
       if (animating) return;
       const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
       setActiveIndex(nextIndex);
@@ -38,12 +38,12 @@ const Home = (props) => {
       setActiveIndex(nextIndex);
     }
   
-    const goToIndex = (newIndex) => {
+   const goToIndex = (newIndex) => {
       if (animating) return;
       setActiveIndex(newIndex);
     }
   
-    const slides = items.map((item) => {
+   const slides = items.map((item) => {
       return (
         <CarouselItem
           onExiting={() => setAnimating(true)}
@@ -58,7 +58,7 @@ const Home = (props) => {
       );
     });
   
-    return (
+   return (
       <Carousel className = "Carousel"
         activeIndex={activeIndex}
         next={next}
