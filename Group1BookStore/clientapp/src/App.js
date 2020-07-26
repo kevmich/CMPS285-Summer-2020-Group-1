@@ -7,8 +7,11 @@ import Toys from './Componets/Toys';
 import Movies from './Componets/Movies';
 import About from './Componets/About';
 import Home from './Componets/Home';
+import Cart from './Componets/Cart';
+import Checkout from './Componets/Checkout';
 import {Provider} from 'react-redux';
 import store from './store.js';
+
 
 
 import {
@@ -27,9 +30,12 @@ function App() {
       <Route exact path="/" component={Home} />
       <Route exact path="/Login" component={Login} />
       <Route exact path="/books" component={Books} />
+      <Route exact path="/cart" component={Cart} />
       <Route exact path="/movies" component={Movies} />
       <Route exact path="/toys" component={Toys} />
       <Route exact path="/about" component={About}/>
+      <Route exact path="/checkout" component={Checkout}/>
+      
       
 
       </Switch>

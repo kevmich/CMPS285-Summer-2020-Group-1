@@ -21,6 +21,7 @@ class Books extends Component {
   async componentDidMount() {
       try {
           const {data} = await axios.get(`api/Book/get-all`);
+          this.props.getData();
           this.setState({
               posts: data
           })
@@ -39,16 +40,13 @@ class Books extends Component {
             (this.state.posts && this.state.posts.length !== 0) ? (
                 this.state.posts.map(post =>
                     <Media>
-                        <Media left href="#">
-                            <Media object data-src="holder.js/64x64"  />
-                        </Media>
                         <Media body>
                             <Media heading>
                                 {post.title}
                             </Media>
                             {post.author} <br/>
                             {post.price}  <br/>
-                            <a  onClick={this.props.addBasket} href = "">Add to Cart</a>
+                            <a  onClick={() => this.props.addBasket(post.title)} href = "javascript:void(0)">Add to Cart</a>
                         </Media>
                     </Media>
                 )
@@ -59,4 +57,4 @@ class Books extends Component {
   }
 }
 
-export default connect(null,{addBasket})(Books);
+export default connect(null,{addBasket},{getData})(Books);

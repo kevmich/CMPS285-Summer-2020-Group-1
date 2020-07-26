@@ -41,18 +41,18 @@ const MyNavabar = (props) => {
           
           <Nav className="nav-wrapper">
              <div className="container">
-          <ul class="nav nav-tabs">
-          <li class="nav-item">
-                 <a class="nav-link active" href="/about">About</a>
+          <ul className="nav nav-tabs">
+          <li className="nav-item">
+                 <a className="nav-link active" href="/about">About</a>
              </li>
-             <li class="nav-item">
-                 <a class="nav-link active" href="/books">Books</a>
+             <li className="nav-item">
+                 <a className="nav-link active" href="/books">Books</a>
              </li>
-               <li class="nav-item">
-                   <a class="nav-link active" href="/movies">Movies</a>
+               <li className="nav-item">
+                   <a className="nav-link active" href="/movies">Movies</a>
                </li>
-               <li class="nav-item">
-                     <a class="nav-link active" href="/toys">Toys</a>
+               <li className="nav-item">
+                     <a className="nav-link active" href="/toys">Toys</a>
                </li>
                 </ul>
 
