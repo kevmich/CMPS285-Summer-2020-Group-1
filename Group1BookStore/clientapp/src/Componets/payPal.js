@@ -56,7 +56,7 @@ export default function PayPal(props) {
   return (
     <div>
       {paidFor ? (
-        <div>
+        <div className ="Moolay">
           <h1>Thanks for the Moolay!</h1>
           
         </div>
