@@ -60,10 +60,14 @@ const MyNavabar = (props) => {
           </Nav>
           
         </Collapse>
-        <li><Link to="/login"> Login </Link></li>
-        <li><Link to="/cart">
+        <Link to="/login"> 
+        <button style= {{marginRight: 5 +"px"}}className="btn btn-success float-left">Login</button>  </Link>
+        <Link to="/cart">
+        <button className="btn btn-primary float-right">
         <ion-icon name="cart-outline"></ion-icon>
-          Cart<span>{props.basketProps.basketNumbers}</span></Link></li>
+          Cart<span>({props.basketProps.basketNumbers})</span> </button>
+          </Link>
+         
       </Navbar>
     </div>
   );

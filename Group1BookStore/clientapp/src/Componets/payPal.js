@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import QR from "../Functions/QR.js";
+
 
 // Implementation
 //<Paypal price={10} description={'Descrition'} />
@@ -57,8 +57,8 @@ export default function PayPal(props) {
     <div>
       {paidFor ? (
         <div>
-          <h1>Thanks for the Monies!</h1>
-          <QR/>
+          <h1>Thanks for the Moolay!</h1>
+          
         </div>
       ) : (
         <div>

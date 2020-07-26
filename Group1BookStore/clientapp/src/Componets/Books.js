@@ -4,6 +4,7 @@ import { Media } from 'reactstrap';
 import React, {  Component } from 'react';
 import {connect} from 'react-redux';
 import {addBasket} from '../actions/addAction';
+import {getData} from '../actions/getAction';
 
 
 
@@ -20,7 +21,7 @@ class Books extends Component {
   async componentDidMount() {
       try {
           const {data} = await axios.get(`api/Book/get-all`);
-          this.props.getData();
+         // this.props.getData();
           this.setState({
               posts: data
           })
@@ -56,4 +57,4 @@ class Books extends Component {
   }
 }
 
-export default connect(null,{addBasket},{getData})(Books);
+export default connect(null,{addBasket}, {getData})(Books);

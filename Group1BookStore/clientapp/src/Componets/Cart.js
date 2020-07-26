@@ -1,12 +1,15 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import {connect} from 'react-redux'; 
 import { Redirect} from 'react-router-dom';
 
 
 
 
+
 function Cart({basketProps}) {
     console.log(basketProps);
+
+    const [PriceRedirect, setPriceRedirect] = useState(false);
 
     let productsInCart = [];
 
@@ -20,12 +23,7 @@ function Cart({basketProps}) {
             console.log(productsInCart);
     })
 
-    let checkout = () => {
-        if(basketProps.cartCost ){
-            return  <Redirect  to="/checkout"/>
-        }
-
-    }
+   
 
     productsInCart = productsInCart.map( (products , index) =>{
         return (
@@ -45,7 +43,7 @@ function Cart({basketProps}) {
         )
     })
 
-    return (
+    return !PriceRedirect ? (
         <div className="container-products">
             <div className="product-header">
                 <h5 className="product-title">PRODUCT</h5>
@@ -61,13 +59,13 @@ function Cart({basketProps}) {
                  <h4 className="basketTotal">{basketProps.cartCost}</h4>
                 </div>     
             <div className="checkout">
-                <button OnClick={checkout}>
+                <button onClick={() => setPriceRedirect(true)}>
                     Checkout
                 </button>
 
             </div>   
         </div>
-    )
+    ) : (<Redirect  to="/checkout"/>)
 }
 
 const mapStateToProps = state => ({
