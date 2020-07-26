@@ -24,7 +24,7 @@ const MyNavabar = (props) => {
 
   return(
   <div>
-      <Navbar color="light" light expand="lg">
+      <Navbar expand="lg">
         <NavbarBrand href="/">The Bookcase</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
@@ -52,7 +52,7 @@ const MyNavabar = (props) => {
           
         </Collapse>
         <Link to="/login"> 
-        <button className="btn btn-success float-left">Login</button> </Link>
+        <button className="btn btn-secondary float-left">Login</button> </Link>
         <Link to="/cart">
         <button className="btn btn-primary float-right">Cart</button></Link>
       </Navbar>

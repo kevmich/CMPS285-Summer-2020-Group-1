@@ -1,76 +1,37 @@
 import React, { useState } from 'react';
-import {
-    Carousel,
-    CarouselItem,
-    CarouselControl,
-    CarouselIndicators,
-    CarouselCaption,
-  } from 'reactstrap';
-  
- 
+import Apple from './Apple';
+import Banana from './Banana';
+import './Home.css';
 
-  const items = [
-    {
-        src: 'https://images.pexels.com/photos/2228557/pexels-photo-2228557.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-    },
-    {
-        src: 'https://images.pexels.com/photos/590493/pexels-photo-590493.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-    },
-    {
-        src: 'https://images.pexels.com/photos/5834/nature-grass-leaf-green.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-    }
-  ];
+
 
 const Home = (props) => {
-    const [activeIndex, setActiveIndex] = useState(0);
-    const [animating, setAnimating] = useState(false);
-    
-  
-  const next = () => {
-      if (animating) return;
-      const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
-      setActiveIndex(nextIndex);
-    }
-  
-    const previous = () => {
-      if (animating) return;
-      const nextIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1;
-      setActiveIndex(nextIndex);
-    }
-  
-   const goToIndex = (newIndex) => {
-      if (animating) return;
-      setActiveIndex(newIndex);
-    }
-  
-   const slides = items.map((item) => {
-      return (
-        <CarouselItem
-          onExiting={() => setAnimating(true)}
-          onExited={() => setAnimating(false)}
-          key={item.src}
-        >
-          <img src={item.src} alt={item.altText} />
-          <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
-        </CarouselItem>
+    return(
+      <div className = "Home">
+        <h1>
+            Welcome to The Bookcase!
+        </h1>
 
-       
-      );
-    });
-  
-   return (
-      <Carousel className = "Carousel"
-        activeIndex={activeIndex}
-        next={next}
-        previous={previous}
-      >
-        <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={goToIndex} />
-        {slides}
-        <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
-        <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
-      </Carousel>
+        <Apple />
 
-  );
+      <div className = "Under">
+        <h1>
+          The Legacy of The Bookcase:
+        </h1>
+        <p>
+        "The story of our family business has been told through several generations. Starting back in late 40s my father's father, Grandpa GDoc, opened up our family's legacy, this bookstore, when he had kids he taught us, Uncle Travis and my dad, Kevin, how to run the family bookstore. Since Travis was older GDoc passed the legacy to him. When Travis got older he sold the business to my father, Kevin. Now as Kevin has also grown older he has passed the torch on to me. We have a time told tradition of serving our local community and now as the digital frontier has arrived we have decided to open yet another avenue of outreach to our local community. " 
+        </p>
+      </div>
+      
+      <Banana />
+
+      </div>
+
+
+        
+     
+
+    )
 
 };
 
