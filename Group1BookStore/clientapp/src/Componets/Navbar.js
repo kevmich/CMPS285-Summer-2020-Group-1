@@ -33,7 +33,7 @@ const MyNavabar = (props) => {
 
   return(
   <div>
-      <Navbar color="light" light expand="lg">
+      <Navbar expand="lg">
         <NavbarBrand href="/">The Bookcase</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>

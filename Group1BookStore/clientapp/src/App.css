@@ -19,7 +19,8 @@ body {
 }
 
 .navbar{
-  outline: 5px solid black
+  outline: 5px solid grey;
+  background-color: white !important;
 
 }
 

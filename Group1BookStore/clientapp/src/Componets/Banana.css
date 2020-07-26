@@ -1,0 +1,17 @@
+.Card{
+    margin: 0em 5em !important;
+}
+.Img{
+    height: auto;
+    width: 100px !important;
+    margin: auto;
+
+}
+.Kiwi{
+    border: 2px solid grey !important;
+    font-size: larger;
+    padding-top: 3em;
+}
+.Pear{
+    border: 2px solid grey !important;
+}
