@@ -5,7 +5,6 @@ import Login from './Componets/Login.js';
 import Books from './Componets/Books';
 import Toys from './Componets/Toys';
 import Movies from './Componets/Movies';
-import About from './Componets/About';
 import Home from './Componets/Home';
 import Cart from './Componets/Cart';
 import Checkout from './Componets/Checkout';
