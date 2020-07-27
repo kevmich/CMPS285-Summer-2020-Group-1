@@ -1,8 +1,10 @@
 import React from 'react';
+import {connect} from 'react-redux'; 
 import Paypal from './payPal';
 
 
-function Checkout(props){
+
+function Checkout({basketProps}){
     
 
 return(
@@ -10,7 +12,7 @@ return(
         <h1></h1>
 
          
-         <Paypal price={10} description={'Description'} />
+         <Paypal price={basketProps.cartCost} description={'Description'} />
     </div>
 )
 
@@ -19,6 +21,10 @@ return(
 
 
 
-export default Checkout;
+const mapStateToProps = state => ({
+    basketProps:  state.basketState
+});
+
+export default connect(mapStateToProps)(Checkout);
 
 //<h4 className="Total">{props.basketProps.cartCost}</h4>

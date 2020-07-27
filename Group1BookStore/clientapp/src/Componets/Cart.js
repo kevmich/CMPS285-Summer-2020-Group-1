@@ -4,10 +4,8 @@ import { Redirect} from 'react-router-dom';
 
 
 
-
-
 function Cart({basketProps}) {
-    console.log(basketProps);
+    console.log("IM HERE" + JSON.stringify(basketProps));
 
     const [PriceRedirect, setPriceRedirect] = useState(false);
 
@@ -27,19 +25,19 @@ function Cart({basketProps}) {
 
     productsInCart = productsInCart.map( (products , index) =>{
         return (
-            <Fragment>
+            <div className="products">
                 
-                <div className ="products"><ion-icon name ="close-circle"></ion-icon>
-                        <span className="sm-hide">Title</span> 
+                <div ><ion-icon name ="close-circle"></ion-icon>
+              <span className="sm-hide">{Object.entries(products)[2][1].title}</span> 
                 </div>
-                <div className="price sm-hide">$Price</div>
+                <div className="price sm-hide">${Object.entries(products)[2][1].price}</div>
                 <div classsName="quantity">
                     <ion-icon className="decrease" name="arrow-back-circle-outline"></ion-icon>
                         <span>Productnumber</span> 
                         <ion-icon className="increase" name="arrow-forward-circle-outline"></ion-icon>  
                 </div>
-                 <div className="total">$number + price</div>
-            </Fragment>
+                 <div className="total">${Object.entries(products)[2][1].price}</div>
+            </div>
         )
     })
 
@@ -51,7 +49,7 @@ function Cart({basketProps}) {
                 <h5 className="quantity">QUANTITY</h5>
                 <h5 className="total">TOTAL</h5>
             </div>     
-            <div className="products">
+            <div className="products-wrapper">
                 {productsInCart}
             </div>   
             <div className="basketTotalContainer">
@@ -67,6 +65,8 @@ function Cart({basketProps}) {
         </div>
     ) : (<Redirect  to="/checkout"/>)
 }
+
+
 
 const mapStateToProps = state => ({
     basketProps:  state.basketState

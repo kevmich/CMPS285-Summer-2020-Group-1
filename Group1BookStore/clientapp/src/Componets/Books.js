@@ -21,7 +21,7 @@ class Books extends Component {
   async componentDidMount() {
       try {
           const {data} = await axios.get(`api/Book/get-all`);
-         // this.props.getData();
+         //this.props.getData();
           this.setState({
               posts: data
           })
@@ -46,7 +46,7 @@ class Books extends Component {
                             </Media>
                             {post.author} <br/>
                             {post.price}  <br/>
-                            <a  onClick={() => this.props.addBasket(post.title)} href = "javascript:void(0)">Add to Cart</a>
+                            <a  onClick={() => this.props.addBasket(post)} href = "javascript:void(0)">Add to Cart</a>
                         </Media>
                     </Media>
                 )
@@ -57,4 +57,4 @@ class Books extends Component {
   }
 }
 
-export default connect(null,{addBasket}, {getData})(Books);
+export default connect(null,{addBasket, getData})(Books);

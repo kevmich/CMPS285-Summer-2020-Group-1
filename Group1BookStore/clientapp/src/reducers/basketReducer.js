@@ -11,32 +11,32 @@ const initialState = {
 
     basketNumbers: 0 ,
     cartCost: 0,
-    products: {
-       
-    }
+    products: [
+
+    ]
 }
 
 
 export default(state = initialState, action) => {
     switch(action.type){
         case ADD_PRODUCT_BASKET:
-           let  productSelected = {...state.products[action.payload]}
+            let  productSelected = {}
             
             productSelected.numbers += 1; //numbers is from product on video
             productSelected.inCart = true;
+            productSelected.product = action.payload;
             console.log(productSelected);
             let data;
 
+            let newProducts = state.products
+            newProducts.push(productSelected)
             return{
                 ...state,
                 basketNumbers: state.basketNumbers + 1,
-                cartCost: state.cartCost + state.products[0].price, //price
+                cartCost: state.cartCost + action.payload.price, //price
 
-                products:{
-                    ...state.products,
-                    [action.payload]: productSelected,
-                }
-
+                products: newProducts,
+                
             }
         case GET_NUMBERS_BASKET:
             return{
@@ -44,6 +44,8 @@ export default(state = initialState, action) => {
             }
 
         case GET_DATA:
+
+            console.log("get data");
 
             axios({
                 method: 'get',
@@ -60,7 +62,7 @@ export default(state = initialState, action) => {
             return{
                 ...state,
 
-                products: data,
+                product: data,
 
             }
 
